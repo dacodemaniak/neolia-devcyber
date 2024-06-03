@@ -1,0 +1,8 @@
+# SQL Datas
+docker/datas
+
+# Environment vars
+.env
+
+# Node JS
+node_modules

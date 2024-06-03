@@ -1,0 +1,337 @@
+/**
+* Grid system
+*/
+$cols: 12;
+
+
+$breakpoint-sm: 36em;
+$breakpoint-md: 48em;
+$breakpoint-lg: 62em;
+$breakpoint-xl: 75em;
+
+/**
+* Helpers
+**/
+@mixin col-basis($basis) {
+    flex : calc($basis / $cols);
+}
+
+.container {
+    width: 100%;
+  }
+  
+  @media screen and (min-width: $breakpoint-sm) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (min-width: $breakpoint-md) {
+    .container {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (min-width: $breakpoint-lg) {
+    .container {
+      width: $breakpoint-lg;
+      margin: 0 auto;
+  
+      &.fluid {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+  
+  @media screen and (min-width: $breakpoint-xl) {
+    .container {
+      width: $breakpoint-xl;
+      margin: 0 auto;
+      &.fluid {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+  
+    .col {
+      flex-basis: 100%;
+      margin-right: .5em;
+      margin-left: .5em;
+  
+      /**
+      * Mobile first grid
+      **/
+      &.xs-hidden {
+        display: none;
+      }
+      &.xs12 {
+        @include col-basis(12);
+      }
+      &.xs11 {
+        @include col-basis(11);
+      }
+      &.xs10 {
+        @include col-basis(10);
+      }
+  
+      &.xs9 {
+        @include col-basis(9);
+      }
+  
+      &.xs8 {
+        @include col-basis(8);
+      }
+  
+      &.xs7 {
+        @include col-basis(7);
+      }
+  
+      &.xs6 {
+        @include col-basis(6);
+      }
+  
+      &.xs5 {
+        @include col-basis(5);
+      }
+  
+      &.xs4 {
+        @include col-basis(4);
+      }
+  
+      &.xs3 {
+        @include col-basis(3);
+      }
+  
+      &.xs2 {
+        @include col-basis(1);
+      }
+  
+      &.xs1 {
+        @include col-basis(1);
+      }
+  
+      /**
+      * Small screens min-width: 36em
+      **/
+      @media screen and (min-width: $breakpoint-sm) {
+        &.s-hidden {
+          display: none;
+        }
+        &.s12 {
+          @include col-basis(12);
+        }
+        &.s11 {
+          @include col-basis(11);
+        }
+        &.s10 {
+          @include col-basis(10);
+        }
+  
+        &.s9 {
+          @include col-basis(9);
+        }
+  
+        &.s8 {
+          @include col-basis(8);
+        }
+  
+        &.s7 {
+          @include col-basis(7);
+        }
+  
+        &.s6 {
+          @include col-basis(6);
+        }
+  
+        &.s5 {
+          @include col-basis(5);
+        }
+  
+        &.s4 {
+          @include col-basis(4);
+        }
+  
+        &.s3 {
+          @include col-basis(3);
+        }
+  
+        &.s2 {
+          @include col-basis(1);
+        }
+  
+        &.s1 {
+          @include col-basis(1);
+        }
+      }
+  
+      /**
+      * Medium screens min-width: 48 em
+      **/
+      @media screen and (min-width: $breakpoint-md) {
+        &.m-hidden {
+          display: none;
+        }
+        &.m12 {
+          @include col-basis(12);
+        }
+        &.m11 {
+          @include col-basis(11);
+        }
+        &.m10 {
+          @include col-basis(10);
+        }
+  
+        &.m9 {
+          @include col-basis(9);
+        }
+  
+        &.m8 {
+          @include col-basis(8);
+        }
+  
+        &.m7 {
+          @include col-basis(7);
+        }
+  
+        &.m6 {
+          @include col-basis(6);
+        }
+  
+        &.m5 {
+          @include col-basis(5);
+        }
+  
+        &.m4 {
+          @include col-basis(4);
+        }
+  
+        &.m3 {
+          @include col-basis(3);
+        }
+  
+        &.m2 {
+          @include col-basis(1);
+        }
+  
+        &.m1 {
+          @include col-basis(1);
+        }
+      }
+  
+      /**
+      * Large devices up-to 992px
+      */
+      @media screen and (min-width: $breakpoint-lg) {
+        &.l-hidden {
+          display: none;
+        }
+        &.l12 {
+          @include col-basis(12);
+        }
+        &.l11 {
+          @include col-basis(11);
+        }
+        &.l10 {
+          @include col-basis(10);
+        }
+  
+        &.l9 {
+          @include col-basis(9);
+        }
+  
+        &.l8 {
+          @include col-basis(8);
+        }
+  
+        &.l7 {
+          @include col-basis(7);
+        }
+  
+        &.l6 {
+          @include col-basis(6);
+        }
+  
+        &.l5 {
+          @include col-basis(5);
+        }
+  
+        &.l4 {
+          @include col-basis(4);
+        }
+  
+        &.l3 {
+          @include col-basis(3);
+        }
+  
+        &.l2 {
+          @include col-basis(1);
+        }
+  
+        &.l1 {
+          @include col-basis(1);
+        }
+      }
+  
+      /**
+      * Extra large devices more than 75 em
+      */
+      @media screen and (min-width: $breakpoint-xl) {
+        &.xl-hidden {
+          display: none;
+        }
+        &.xl12 {
+          @include col-basis(12);
+        }
+        &.xl11 {
+          @include col-basis(11);
+        }
+        &.xl10 {
+          @include col-basis(10);
+        }
+  
+        &.xl9 {
+          @include col-basis(9);
+        }
+  
+        &.xl8 {
+          @include col-basis(8);
+        }
+  
+        &.xl7 {
+          @include col-basis(7);
+        }
+  
+        &.xl6 {
+          @include col-basis(6);
+        }
+  
+        &.xl5 {
+          @include col-basis(5);
+        }
+  
+        &.xl4 {
+          @include col-basis(4);
+        }
+  
+        &.xl3 {
+          @include col-basis(3);
+        }
+  
+        &.xl2 {
+          @include col-basis(1);
+        }
+  
+        &.xl1 {
+          @include col-basis(1);
+        }
+      }
+    }
+  }

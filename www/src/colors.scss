@@ -1,0 +1,11 @@
+/**
+* Sets colors
+*/
+$primary: rgb(200, 100, 10);
+$dark-primary: darken($primary, 10%);
+$secondary: rgb(75, 200, 10);
+$dark-secondary: darken($secondary, 10%);
+$warning: rgb(225, 100, 10);
+$danger: rgb(255, 10, 10);
+$muted: rgb(200, 225, 200);
+$font: rgb(10, 10, 10);

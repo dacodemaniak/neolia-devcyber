@@ -1,0 +1,26 @@
+{
+  "name": "www",
+  "version": "1.0.0",
+  "description": "Simple HTML - JS - CSS project",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "jest"
+  },
+  "keywords": [
+    "Vite",
+    "HTML",
+    "CSS",
+    "SCSS",
+    "Vanilla",
+    "JS"
+  ],
+  "author": "Aélion <jean-luc.aubert@aelion.fr>",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "sass": "^1.77.4",
+    "vite": "^5.2.12"
+  }
+}
