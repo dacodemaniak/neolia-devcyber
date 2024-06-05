@@ -1,4 +1,4 @@
-import { LoginForm } from './login-form/login-form'
+import { Login } from './login-form/login'
 
 import './main.scss'
 
@@ -8,7 +8,7 @@ export class Main {
     }
 
     #run() {
-        const controller = new LoginForm('login-form')
+        const controller = new Login()
     }
 }
 

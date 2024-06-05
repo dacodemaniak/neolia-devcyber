@@ -61,7 +61,7 @@ export class Form {
 
     get value() {
         this.#value = {}
-        this._controls.forEach((control) => {
+        this.#controls.forEach((control) => {
             this.#value[control.controlName] = control.value
         })
         return this.#value

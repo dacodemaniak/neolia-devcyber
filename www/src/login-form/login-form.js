@@ -8,9 +8,13 @@ import './../scss/material/button.scss'
 import './../scss/material/input.scss'
 
 export class LoginForm extends Form {
+    #formSelector = null
+
     constructor(formSelector) {
         super()
-        this.form = this.#loadForm(formSelector)
+        this.#formSelector = formSelector
+
+        //this.form = this.#loadForm(formSelector)
     }
 
     #setFields() {
@@ -22,7 +26,7 @@ export class LoginForm extends Form {
         Handler.formHandler(this)
     }
 
-    async #loadForm(formSelector) {
+    async loadForm() {
         const templateLoader = new TemplateLoader('login-form')
         const el = await templateLoader.loadFromFile()
         
@@ -38,8 +42,6 @@ export class LoginForm extends Form {
         })
 
         this.#setFields()
-
-        form.addEventListener('submit', (event) => this.onSubmit(event))
 
         return form
     }
