@@ -53,6 +53,10 @@ final class Request {
         $this->datas[$key] = $value;
     }
 
+    public function getPayload(): array {
+        return $this->datas;
+    }
+
     public function process(): Response {
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->uri = $_SERVER['REQUEST_URI'];

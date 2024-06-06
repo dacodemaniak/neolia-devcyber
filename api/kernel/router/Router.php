@@ -21,5 +21,10 @@ class Router extends \AltoRouter {
             '/',
             'Api\Home\Home#hello'
         );
+        $this->map(
+            'POST',
+            '/signin',
+            'Api\User\Signin#signin'
+        );
     }
 }
