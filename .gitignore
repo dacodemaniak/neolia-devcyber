@@ -6,3 +6,6 @@ docker/datas
 
 # Node JS
 node_modules
+
+# Dist folder
+dist
