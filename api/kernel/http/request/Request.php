@@ -58,13 +58,14 @@ final class Request {
     }
 
     public function process(): Response {
+        $this->setCorsHeaders();
+
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->uri = $_SERVER['REQUEST_URI'];
 
         $match = $this->kernel->getRouter()->match();
 
         if ($match !== false) {
-            $this->setCorsHeaders();
             $this->setRequestDatas();
             $target = $match['target'];
             $targetParser = new TargetParser($target);
@@ -98,5 +99,6 @@ final class Request {
 
     private function setCorsHeaders() {
         header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Origin, Content-Type');
     }
 }
