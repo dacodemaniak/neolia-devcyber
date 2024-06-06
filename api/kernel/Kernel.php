@@ -15,6 +15,10 @@ use Aelion\Http\Request\Request;
 use Aelion\Http\Response\Response;
 use Aelion\Http\Response\JsonResponse;
 use Aelion\Http\Response\HttpResponseStatus;
+use Aelion\Router\Exception\NoRouteMatchingException;
+use Aelion\Router\Exception\NoSuchFileException;
+
+use Dotenv\Dotenv;
 
 class Kernel {
     /**
@@ -31,7 +35,9 @@ class Kernel {
 
     private function __construct() {
         $this->setRouter();
-        
+        // Set environment vars
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+        $dotenv->load();
     }
 
     /**
