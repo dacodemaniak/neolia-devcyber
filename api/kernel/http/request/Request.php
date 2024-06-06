@@ -46,7 +46,7 @@ final class Request {
         if (array_key_exists($key, $this->datas)) {
             return $this->datas[$key];
         }
-        throw new NoSuchArgumentException('Data does not exists in this Http Request');
+        throw new NoSuchArgumentException('Data : ' . $key . ' does not exists in this Http Request');
     }
 
     public function set(string $key, string $value): void {
@@ -63,7 +63,8 @@ final class Request {
 
         $match = $this->kernel->getRouter()->match();
 
-        if (!is_null($match)) {
+        if ($match !== false) {
+            $this->setCorsHeaders();
             $this->setRequestDatas();
             $target = $match['target'];
             $targetParser = new TargetParser($target);
@@ -93,5 +94,9 @@ final class Request {
 
         $payloadData = new PayloadData($this);
         $payloadData->process();
+    }
+
+    private function setCorsHeaders() {
+        header('Access-Control-Allow-Origin: *');
     }
 }

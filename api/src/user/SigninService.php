@@ -11,6 +11,7 @@ namespace Api\User;
 use Aelion\Dbal\Exception\IncorrectSqlExpressionException;
 use Aelion\Dbal\Exception\NotFoundException;
 use Aelion\Http\Request\Request;
+use Aelion\Http\Response\Response;
 use Aelion\Http\Response\HttpResponseStatus;
 use Aelion\Http\Response\JsonResponse;
 use Aelion\Registry\Registrable;
@@ -18,7 +19,7 @@ use Aelion\Registry\Registrable;
 class SigninService implements Registrable {
 
     private $repository = null;
-    private Request $request = null;
+    private Request $request;
 
     private function __construct(Request $request) {
         $this->request = $request;
@@ -33,7 +34,7 @@ class SigninService implements Registrable {
         return new SigninService($request);
     }
 
-    public function signin(): ?array {
+    public function signin(): Response {
         try {
             $userEntity = $this->repository->findByLoginAndPassword($this->request->get('username'), $this->request->get('userpassword'));
             $roles = [];
@@ -51,13 +52,15 @@ class SigninService implements Registrable {
                 'password' => $userEntity->getPassword(),
                 'account' => [
                     'id' => $userEntity->getAccount()->getId(),
-                    'lastname' => $userEntity->getAccount()->getId(),
+                    'lastname' => $userEntity->getAccount()->getLastname(),
                     'firstname' => $userEntity->getAccount()->getFirstname(),
                     'gender' => $userEntity->getAccount()->getGender()
                 ],
                 'roles' => $roles
             ];
-            return $payload;
+            $response = new JsonResponse();
+            $response->setPayload($payload);
+            return $response;
         } catch (IncorrectSqlExpressionException $e) {
             $response = new JsonResponse();
             $response->setStatus(HttpResponseStatus::InternalServerError);
@@ -65,7 +68,7 @@ class SigninService implements Registrable {
                 'message' => $e->getMessage()
             ];
             $response->setPayload($content);
-            echo $response;
+            return $response;
         } catch (NotFoundException $e) {
             $response = new JsonResponse();
             $response->setStatus(HttpResponseStatus::NotFound);
@@ -73,7 +76,7 @@ class SigninService implements Registrable {
                 'message' => $e->getMessage()
             ];
             $response->setPayload($content);
-            echo $response;            
+            return $response;       
         }
        
     }

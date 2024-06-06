@@ -8,9 +8,10 @@
  */
 namespace Aelion\Dbal;
 
-class Mysql extends DBAL {
+class Mysql extends DBAL implements Connectable {
     public function __construct(){
-        $this->setDSN();    
+        $this->dbConfig = new DbConfig();
+        $this->setDSN();
     }
 
     public function connect(): ?\PDO {

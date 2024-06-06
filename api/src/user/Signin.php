@@ -16,7 +16,7 @@ use Aelion\Mvc\Controller\AbstractController;
 use Aelion\Registry\Service\ServiceRegistry;
 
 class Signin extends AbstractController {
-    private SigninService $service = null;
+    private SigninService $service;
 
 
     public function __construct(Request $request) {
@@ -24,9 +24,6 @@ class Signin extends AbstractController {
     }
 
     public function signin(): Response {
-        $response = new JsonResponse();
-        $result = $this->service->signin();
-        $response->setPayload($result);
-        return $response;
+        return $this->service->signin();
     }
 }

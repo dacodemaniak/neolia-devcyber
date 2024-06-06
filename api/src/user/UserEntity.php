@@ -14,8 +14,8 @@ class UserEntity {
     private int $id;
     private string $login;
     private string $password;
-    private array $roles;
-    private AccountEntity $account;
+    private array $roles = [];
+    private ?AccountEntity $account = null;
 
     public function ___construct() {
         $this->roles = [];

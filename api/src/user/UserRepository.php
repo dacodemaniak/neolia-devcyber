@@ -14,7 +14,7 @@ use Aelion\Dbal\Exception\IncorrectSqlExpressionException;
 use Api\Account\AccountEntity;
 
 class UserRepository {
-    private \PDO $dbInstance = null;
+    private \PDO $dbInstance;
 
     public function __construct() {
         $this->dbInstance = DBAL::getConnection();
@@ -27,7 +27,8 @@ class UserRepository {
             FROM 
             user u 
             JOIN user_has_role uhr ON u.id = uhr.user_id 
-            JOIN role r ON uhr.role_id = r.id 
+            JOIN role r ON uhr.role_id = r.id
+            JOIN account a ON u.id = a.user_id 
             WHERE login = '$username' AND password = '$password';";
         
         $pdoStatement = $this->dbInstance->query($sqlQuery);
@@ -50,6 +51,7 @@ class UserRepository {
                 $account->setLastname($result->lastname);
                 $account->setFirstname($result->firstname);
                 $account->setGender($result->gender);
+                $user->setAccount($account);
                 
                 while ($result = $pdoStatement->fetch(\PDO::FETCH_OBJ)) {
                     $role = new RoleEntity();

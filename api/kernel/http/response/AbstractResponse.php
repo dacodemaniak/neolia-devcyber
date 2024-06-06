@@ -24,14 +24,17 @@ abstract class AbstractResponse implements Response {
     }
 
 
-    public function addPayloadItem(string $item, $value): Response {}
+    public function addPayloadItem(string $item, $value): ?Response {
+        return null;
+    }
 
     public function ok(): void {}
 
-    public function setStatus(HttpResponseStatus $status): string {
+    public function setStatus(HttpResponseStatus $status): void {
         $this-> statusResponseHeader = match($status) {
             HttpResponseStatus::Ok => [200, 'Ok'],
-            HttpResponseStatus::NotFound => [403, 'Not Found']
+            HttpResponseStatus::NotFound => [404, 'Not Found'],
+            HttpResponseStatus::InternalServerError => [500, 'Server error']
         };
     }
 
