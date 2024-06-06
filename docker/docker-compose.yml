@@ -1,4 +1,3 @@
-version: '3'
 services: 
     db: 
         image: mariadb:latest
@@ -39,6 +38,6 @@ services:
         networks:
             - cyber
 networks: 
-    poe: 
+    cyber: 
         driver: bridge
         external: false
