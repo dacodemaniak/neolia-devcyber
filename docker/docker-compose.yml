@@ -30,7 +30,7 @@ services:
         ports: 
             - 8080:80
         volumes:
-            - ./../poe/dist:/var/www/vhosts/www/htdocs
+            - ./../www/dist:/var/www/vhosts/www/htdocs
             - ./etc/apache2/www/sites-enabled:/etc/apache2/sites-enabled
             - ./logs:/var/log/apache2
         depends_on:
