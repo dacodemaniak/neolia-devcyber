@@ -22,7 +22,7 @@
 	],
 	"autoload" : {
 		"psr-4" : {
-			"Aelion\\" : "kernel",
+			"Aelion\\" : "Kernel",
 			"Api\\" : "src"
 		}
 	},

@@ -24,7 +24,6 @@ class ParsedRoute {
     }
 
     public function setPath(string $path): void {
-        $path = strtolower($path);
         $this->path = 'src/' . $path . '/';
     }
 
